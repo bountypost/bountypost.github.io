@@ -1,1 +1,104 @@
-hello bp
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>BountyPost</title>
+    <!-- Required meta tags -->
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Prompt:500|Roboto" rel="stylesheet">
+    <script src="https://use.fontawesome.com/365c4217b2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+
+    <style>
+    	.bp-nav {
+    		margin: 0 5px;
+    	}
+    	.button:hover {
+    		cursor: pointer;
+    	}
+	</style>
+  </head>
+  <body>
+
+  	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+	  <a class="navbar-brand" href="/">
+	  	<img src="/logo.svg" style="height: 36px; width: 36px"><span style="font-size: 24px">BountyPost</span>
+	  </a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon">
+	    	
+	    </span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav ml-auto">
+	      <li class="nav-item bp-nav">
+	        <a href="/bounties/new">
+	        	<button type="button" class="btn btn-primary">New Bounty</button>
+	        </a>
+	      </li>
+	      <li class="nav-item bp-nav">
+	        <a class="nav-link" href="#">Login</a>
+	      </li>
+	      <li class="nav-item bp-nav">
+	        <a class="nav-link" href="#">FAQ</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+
+    <%= yield %>
+
+    <div id="firebaseui-auth-container"></div>
+
+    <div style="font-size: 12px; margin: 20px 0; text-align: center">
+    	&copy; 2017 BountyPost
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyDp3DzzywaZ3c-3w6r6JLYkg2MFRi5Jr7s",
+	    authDomain: "bpbp-643cc.firebaseapp.com",
+	    databaseURL: "https://bpbp-643cc.firebaseio.com",
+	    projectId: "bpbp-643cc",
+	    storageBucket: "",
+	    messagingSenderId: "788671271357"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+
+	<script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
+	<script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        signInSuccessUrl: '<url-to-redirect-to-on-success>',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        ],
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>
